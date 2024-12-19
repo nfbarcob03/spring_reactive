@@ -1,0 +1,59 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: "imdb"
+  devtools:
+    add-properties: false
+  h2:
+    console:
+      enabled: true
+      path: "/h2"
+  profiles:
+    include: null
+
+  r2dbc:
+    url: r2dbc:h2:mem:///employees;DB_CLOSE_DELAY=-1;MODE=LEGACY
+  flyway:
+    url: jdbc:h2:mem:employees;DB_CLOSE_DELAY=-1;MODE=LEGACY
+    locations: classpath:db/h2/migration
+    baseline-on-migrate: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    circuitbreakers:
+      enabled: true
+cors:
+  allowed-origins: "http://localhost:4200,http://localhost:8080"
+adapter:
+  restconsumer:
+    url: "http://localhost:8080"
+resilience4j:
+  circuitbreaker:
+    instances:
+      testGet:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        slowCallRateThreshold: 50
+        slowCallDurationThreshold: "2s"
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 10
+        waitDurationInOpenState: "10s"
+      testPost:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        slowCallRateThreshold: 50
+        slowCallDurationThreshold: "2s"
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 10
+        waitDurationInOpenState: "10s"

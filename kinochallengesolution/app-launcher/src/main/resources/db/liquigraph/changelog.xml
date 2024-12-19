@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<changelog xmlns="https://www.liquigraph.org/schema/1.0/liquigraph.xsd">
+    <changeset id="initial_data" author="dborja">
+        <query>CREATE (m:Movie {id:'bcafdf7c-6e5b-4597-b14d-5318d58ed132',movieId:'tt0232500', name:'The Fast and the Furious'}) RETURN m</query>
+        <query>CREATE (m:Movie {id:'a4e355bc-90d8-4b40-bd46-2fbdca38e35e',movieId:'tt0322259', name:'2 Fast 2 Furious'}) RETURN m</query>
+        <query>CREATE (m:Movie {id:'3fb74781-0062-4887-958b-13f8d7433868',movieId:'tt0463985', name:'The Fast and the Furious: Tokyo Drift'}) RETURN m</query>
+        <query>CREATE (m:Movie {id:'af56b3ef-f837-4ab4-94ea-e515ebcb81d9',movieId:'tt1013752', name:'Fast &amp; Furious'}) RETURN m</query>
+        <query>CREATE (m:Movie {id:'66f22332-5942-4be2-9077-bf388d5b19de',movieId:'tt1596343', name:'Fast Five'}) RETURN m</query>
+        <query>CREATE (m:Movie {id:'08c3f470-60a5-4402-8aa2-4a3d97e6ef07',movieId:'tt1905041', name:'Fast &amp; Furious 6'}) RETURN m</query>
+        <query>CREATE (m:Movie {id:'12865dd2-cb9e-4d82-a3b1-221195d5a1e9',movieId:'tt2820852', name:'Furious 7'}) RETURN m</query>
+        <query>CREATE (m:Movie {id:'2c8e4f05-4543-40ab-86ec-fcc95369dfd3',movieId:'tt4630562', name:'The Fate of the Furious'}) RETURN m</query>
+        <query>CREATE (m:Movie {id:'b26989e6-0bee-4bb4-b59b-93a16e46618c',movieId:'tt5433138', name:'F9: The Fast Saga'}) RETURN m</query>
+    </changeset>
+    <changeset id="add_initial_constraints" author="dborja">
+        <query>CREATE CONSTRAINT FOR (movie:Movie) REQUIRE movie.movieId IS UNIQUE</query>
+    </changeset>
+</changelog>

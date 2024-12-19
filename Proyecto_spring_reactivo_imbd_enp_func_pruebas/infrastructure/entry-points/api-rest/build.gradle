@@ -1,0 +1,24 @@
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    implementation project(':usecase')
+    implementation project(':model')
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '3.2.0'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation ('com.github.javafaker:javafaker:1.0.2') { exclude module: 'org.yaml' }
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '1.33'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.13.0'
+
+
+
+
+
+}
+
+
+configurations{
+	implementation.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+}
